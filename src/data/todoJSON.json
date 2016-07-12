@@ -1,0 +1,54 @@
+{
+    "todos" : [
+        {
+            "text": "Call landlord",
+            "completed": false,
+            "id": 0
+        },
+        {
+            "text": "Do laundry",
+            "completed": false,
+            "id": 1
+        },
+        {
+            "text": "Create documentations",
+            "completed": false,
+            "id": 2
+        },
+        {
+            "text": "Learn ReactJS",
+            "completed": false,
+            "id": 3
+        },
+        {
+            "text": "Fill-in Timewax",
+            "completed": false,
+            "id": 4
+        },
+        {
+            "text": "Exercise table soccer",
+            "completed": false,
+            "id": 5
+        },
+        {
+            "text": "Set up meeting with UI guys",
+            "completed": false,
+            "id": 6
+        },
+        {
+            "text": "Buy coffee",
+            "completed": false,
+            "id": 7
+        },
+        {
+            "text": "Pay lunch money",
+            "completed": false,
+            "id": 8
+        },
+        {
+            "text": "Remove garbage",
+            "completed": false,
+            "id": 9
+        }
+    ]
+}
