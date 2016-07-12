@@ -1,7 +1,7 @@
 var initialTodo = {
-  text: 'Use AngularJS',
-  completed: false,
-  id: 0
+    text: 'Use AngularJS',
+    completed: false,
+    id: 0
 };
 
 /** @ngInject */
@@ -11,62 +11,61 @@ function TodoService($http, $q) {
 }
 
 TodoService.prototype = {
-  addTodo: function (text, todos) {
-    return [
-      {
-        id: (todos.length === 0) ? 0 : todos[0].id + 1,
-        completed: false,
-        text: text
-      }
-    ].concat(todos);
-  },
+    addTodo: function (text, todos) {
+        return [
+            {
+                id: (todos.length === 0) ? 0 : todos[0].id + 1,
+                completed: false,
+                text: text
+            }
+        ].concat(todos);
+    },
 
-  completeTodo: function (id, todos) {
-    return todos.map(function (todo) {
-      return todo.id === id ?
-        Object.assign({}, todo, {completed: !todo.completed}) :
-        todo;
-    });
-  },
+    completeTodo: function (id, todos) {
+        return todos.map(function (todo) {
+            return todo.id === id ?
+                Object.assign({}, todo, {completed: !todo.completed}) :
+                todo;
+        });
+    },
 
-  deleteTodo: function (id, todos) {
-    return todos.filter(function (todo) {
-      return todo.id !== id;
-    });
-  },
+    deleteTodo: function (id, todos) {
+        return todos.filter(function (todo) {
+            return todo.id !== id;
+        });
+    },
 
-  editTodo: function (id, text, todos) {
-    return todos.map(function (todo) {
-      return todo.id === id ?
-        Object.assign({}, todo, {text: text}) :
-        todo;
-    });
-  },
+    editTodo: function (id, text, todos) {
+        return todos.map(function (todo) {
+            return todo.id === id ?
+                Object.assign({}, todo, {text: text}) :
+                todo;
+        });
+    },
 
-    /**
-     * Complete all todos
-     * @param todos
-     */
     completeAll: function (todos) {
-        window.alert('it should complete all todos');
-        return todos;
+        var areAllMarked = todos.every(function (todo) {
+            return todo.completed;
+        });
+        return todos.map(function (todo) {
+            return Object.assign({}, todo, {completed: !areAllMarked});
+        });
     },
 
-    /**
-     * Clear only completed todos
-     * @param todos
-     */
     clearCompleted: function (todos) {
-        window.alert('it should clear completed todos');
-        return todos;
+        return todos.filter(function (todo) {
+            return todo.completed === false;
+        });
     },
 
-    /**
-     * Load todos from JSON file (todoJSON.json)
-     * Hint: use $q and $http
-     */
     loadTodoJSON: function (todos) {
-        window.alert('it should load todos from JSON file');
+        var deferred = this.$q.defer();
+        this.$http.get('data/todoJSON.json').then(function (res) {
+            deferred.resolve(res)
+        }, function (err) {
+            deferred.reject('Error loading todoJSON.')
+        });
+        return deferred.promise;
     }
 
 };

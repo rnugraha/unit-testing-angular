@@ -24,7 +24,7 @@ MainSection.prototype = {
   handleLoadCompleted: function () {
     var _this = this;
     this.todoService.loadTodoJSON(this.todos).then(function (res) {
-      _this.todos = res.todos;
+      _this.todos = res.data.todos;
     });
   },
 
