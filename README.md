@@ -1,4 +1,5 @@
 # unit-testing-angular
+Sample angular 1.x app for unit testing excercise
 
 ## Pre-requisites
 Make sure you have npm installed
